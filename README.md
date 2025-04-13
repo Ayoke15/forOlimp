@@ -1,0 +1,2 @@
+# forOlimp
+For olympics purposes
