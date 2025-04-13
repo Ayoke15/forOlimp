@@ -1,10 +1,6 @@
 import socket
 
 def is_ip_available(ip, port=80, timeout=2):
-    """
-    Проверяет доступность IP-адреса, пытаясь установить TCP-подключение.
-    Возвращает True, если адрес доступен, иначе False.
-    """
     try:
         socket.setdefaulttimeout(timeout)
         conn = socket.create_connection((ip, port))
@@ -14,11 +10,6 @@ def is_ip_available(ip, port=80, timeout=2):
         return False
 
 def calc_ip_criterion(ip):
-    """
-    Вычисляет признак для IPv4-адреса.
-    Признак: равенство суммы первых двух байт и суммы вторых двух байт.
-    Возвращает кортеж (sum_first, sum_second, is_criterion_met).
-    """
     try:
         bytes_list = [int(part) for part in ip.split('.')]
         if len(bytes_list) != 4:
@@ -31,12 +22,6 @@ def calc_ip_criterion(ip):
         return None, None, False
 
 def process_ips(ip_list):
-    """
-    Обрабатывает список IP-адресов:
-    1. Проверяет доступность.
-    2. Вычисляет признак.
-    3. Формирует итоговую запись.
-    """
     results = []
     for ip in ip_list:
         available = is_ip_available(ip)
